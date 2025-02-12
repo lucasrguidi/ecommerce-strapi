@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-aspect-ratio": "^1.1.2",
+    "@radix-ui/react-separator": "^1.1.2",
+    "@radix-ui/react-slot": "^1.1.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.475.0",
@@ -24,8 +27,13 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
+    "eslint": "^9.20.1",
     "eslint-config-next": "15.2.0-canary.52",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-react": "^7.37.4",
+    "prettier": "^3.5.0",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
