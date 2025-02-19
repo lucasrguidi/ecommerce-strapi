@@ -1,8 +1,8 @@
 'use client';
 
+import { Logo } from '@/src/components/custom/logo';
+import { Separator } from '@/src/components/ui/separator';
 import Link from 'next/link';
-import { Separator } from '@/components/ui/separator';
-import { Logo } from '@/components/custom/logo';
 
 // Footer navigation data
 const FOOTER_COLUMNS = [

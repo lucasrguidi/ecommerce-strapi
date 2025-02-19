@@ -1,7 +1,7 @@
-import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { AspectRatio } from '@/src/components/ui/aspect-ratio';
 import Image from 'next/image';
 import Category from '../types/category';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/src/components/ui/button';
 import { ChevronRight } from 'lucide-react';
 
 interface CategoryCardProps {

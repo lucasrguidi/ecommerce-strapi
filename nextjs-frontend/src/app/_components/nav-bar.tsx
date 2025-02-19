@@ -1,13 +1,13 @@
 'use client';
 
-import { Logo } from '@/components/custom/logo';
-import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
+import { Logo } from '@/src/components/custom/logo';
+import { Button } from '@/src/components/ui/button';
+import { Separator } from '@/src/components/ui/separator';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 import CartIcon from './cart-icon';
-import { ThemeToggle } from '@/components/custom/theme-toggle';
+import { ThemeToggle } from '@/src/components/custom/theme-toggle';
 
 const MENU_ITEMS = [
   { label: 'Eletrônicos', href: '#' },
