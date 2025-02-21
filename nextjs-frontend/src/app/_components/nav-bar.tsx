@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { Logo } from '@/src/components/custom/logo';
-import { Button } from '@/src/components/ui/button';
-import { Separator } from '@/src/components/ui/separator';
-import { Menu, X } from 'lucide-react';
-import Link from 'next/link';
-import { useState } from 'react';
-import CartIcon from './cart-icon';
-import { ThemeToggle } from '@/src/components/custom/theme-toggle';
+import { Logo } from "@/components/custom/logo";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { Menu, X } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
+import CartIcon from "./cart-icon";
+import { ThemeToggle } from "@/components/custom/theme-toggle";
 
 const MENU_ITEMS = [
-  { label: 'Eletrônicos', href: '#' },
-  { label: 'Roupas', href: '#' },
-  { label: 'Casa e Decoração', href: '#' },
-  { label: 'Pricing', href: '#' },
-  { label: 'FAQ', href: '#' },
+  { label: "Eletrônicos", href: "#" },
+  { label: "Roupas", href: "#" },
+  { label: "Casa e Decoração", href: "#" },
+  { label: "Pricing", href: "#" },
+  { label: "FAQ", href: "#" },
 ] as const;
 
 interface NavMenuItemsProps {
@@ -22,7 +22,7 @@ interface NavMenuItemsProps {
 }
 
 const NavMenuItems = ({ className }: NavMenuItemsProps) => (
-  <div className={`flex flex-col gap-1 md:flex-row ${className ?? ''}`}>
+  <div className={`flex flex-col gap-1 md:flex-row ${className ?? ""}`}>
     {MENU_ITEMS.map(({ label, href }) => (
       <Link key={label} href={href}>
         <Button variant="ghost" className="w-full md:w-auto">
@@ -70,7 +70,7 @@ export function Navbar() {
             variant="ghost"
             className="flex size-9 items-center justify-center md:hidden"
             onClick={toggleMenu}
-            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             {isMenuOpen ? <X /> : <Menu />}
           </Button>

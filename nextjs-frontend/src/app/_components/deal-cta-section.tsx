@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { Button } from '@/src/components/ui/button';
-import { ChevronRight } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { ChevronRight } from "lucide-react";
 
 export function DealCtaSection() {
   return (

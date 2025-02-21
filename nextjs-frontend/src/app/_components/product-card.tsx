@@ -1,10 +1,10 @@
-import { AspectRatio } from '@/src/components/ui/aspect-ratio';
-import Image from 'next/image';
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import Image from "next/image";
 
-import { Button } from '@/src/components/ui/button';
-import { Card, CardContent, CardFooter } from '@/src/components/ui/card';
-import { Heart, ShoppingCart } from 'lucide-react';
-import Product from '../types/product';
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Heart, ShoppingCart } from "lucide-react";
+import Product from "../types/product";
 
 interface ProductCardProps {
   product: Product;
@@ -35,10 +35,10 @@ export default function ProductCard({ product }: ProductCardProps) {
         </Button>
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Button variant={'outline'}>
+        <Button variant={"outline"}>
           <Heart />
         </Button>
-        <Button variant={'link'}>Ver detalhes</Button>
+        <Button variant={"link"}>Ver detalhes</Button>
       </CardFooter>
     </Card>
   );

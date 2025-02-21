@@ -1,42 +1,42 @@
-'use client';
+"use client";
 
-import { Logo } from '@/src/components/custom/logo';
-import { Separator } from '@/src/components/ui/separator';
-import Link from 'next/link';
+import { Logo } from "@/components/custom/logo";
+import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
 
 // Footer navigation data
 const FOOTER_COLUMNS = [
   {
-    title: 'Sobre a LS',
+    title: "Sobre a LS",
     links: [
-      { label: 'Sobre nós', href: '#' },
-      { label: 'Parceiros', href: '#' },
-      { label: 'Carreiras', href: '#' },
+      { label: "Sobre nós", href: "#" },
+      { label: "Parceiros", href: "#" },
+      { label: "Carreiras", href: "#" },
     ],
   },
   {
-    title: 'Fale Conosco',
+    title: "Fale Conosco",
     links: [
-      { label: 'Perguntas Frequentes', href: '#' },
-      { label: 'Apoio ao cliente', href: '#' },
-      { label: 'Pedidos e entrega', href: '#' },
+      { label: "Perguntas Frequentes", href: "#" },
+      { label: "Apoio ao cliente", href: "#" },
+      { label: "Pedidos e entrega", href: "#" },
     ],
   },
   {
-    title: 'Conta',
+    title: "Conta",
     links: [
-      { label: 'Sua Conta', href: '#' },
-      { label: 'Configurações', href: '#' },
-      { label: 'Termos', href: '#' },
+      { label: "Sua Conta", href: "#" },
+      { label: "Configurações", href: "#" },
+      { label: "Termos", href: "#" },
     ],
   },
 ];
 
 // Legal links data
 const LEGAL_LINKS = [
-  { label: 'Política de Privacidade', href: '#' },
-  { label: 'Termos de Serviço', href: '#' },
-  { label: 'Configurações de Cookies', href: '#' },
+  { label: "Política de Privacidade", href: "#" },
+  { label: "Termos de Serviço", href: "#" },
+  { label: "Configurações de Cookies", href: "#" },
 ];
 
 export function Footer() {
@@ -80,7 +80,7 @@ export function Footer() {
         <div className="flex flex-col gap-12 text-center lg:flex-row lg:items-center lg:justify-between lg:text-left">
           {/* Copyright Text */}
           <p className="text-muted-foreground order-2 text-center text-base lg:order-1 lg:text-left">
-            <span>Copyright © {new Date().getFullYear()}</span>{' '}
+            <span>Copyright © {new Date().getFullYear()}</span>{" "}
             <Link href="/" className="hover:underline">
               lucasshop.com
             </Link>

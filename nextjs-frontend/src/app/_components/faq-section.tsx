@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/src/components/ui/accordion';
-import { Button } from '@/src/components/ui/button';
-import Link from 'next/link';
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export function FaqSection() {
   return (
@@ -24,7 +24,7 @@ export function FaqSection() {
           {/* Section Description */}
           <p className="text-muted-foreground">
             Juntamos as informações mais importantes para ajudá-lo a aproveitar ao máximo sua
-            experiência. Não consegue encontrar o que procura?{' '}
+            experiência. Não consegue encontrar o que procura?{" "}
             <Link href="#" className="text-primary underline">
               Contate-nos.
             </Link>

@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { Button } from '@/src/components/ui/button';
-import { ArrowRight } from 'lucide-react';
-import { AspectRatio } from '@/src/components/ui/aspect-ratio';
-import Image from 'next/image';
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import Image from "next/image";
 
 export function HeroSection() {
   return (

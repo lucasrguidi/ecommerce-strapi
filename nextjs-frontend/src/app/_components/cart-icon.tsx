@@ -1,14 +1,14 @@
-import { Badge } from '@/src/components/ui/badge';
-import { Button } from '@/src/components/ui/button';
-import { ShoppingCart } from 'lucide-react';
-import Link from 'next/link';
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { ShoppingCart } from "lucide-react";
+import Link from "next/link";
 
 export default function CartIcon() {
   return (
     <Link href="#">
       <Button variant="ghost">
         <ShoppingCart />
-        <Badge variant={'outline'}>5</Badge>
+        <Badge variant={"outline"}>5</Badge>
       </Button>
     </Link>
   );
