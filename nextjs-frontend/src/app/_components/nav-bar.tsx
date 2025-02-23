@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useState } from "react";
 import CartIcon from "./cart-icon";
 import { ThemeToggle } from "@/components/custom/theme-toggle";
+import { AuthDialog } from "./auth-dialog";
 
 const MENU_ITEMS = [
   { label: "Eletrônicos", href: "#" },
@@ -63,6 +64,7 @@ export function Navbar() {
           <div className="hidden gap-3 md:flex">
             <CartIcon />
             <ThemeToggle />
+            <AuthDialog />
           </div>
 
           {/* Mobile menu button */}

@@ -19,6 +19,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
             src={imgUrl}
             alt={category.name}
             fill
+            sizes="100"
             className="h-full w-full rounded-xl object-cover"
             priority
           />

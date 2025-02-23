@@ -41,6 +41,7 @@ export function HeroSection() {
               src="https://ui.shadcn.com/placeholder.svg"
               alt="Hero section visual"
               fill
+              sizes="100"
               priority
               className="h-full w-full rounded-xl object-cover"
             />

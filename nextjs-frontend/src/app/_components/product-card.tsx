@@ -20,6 +20,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           src={imgUrl}
           alt={product.name}
           fill
+          sizes="100"
           className="h-full w-full rounded-xl rounded-b-none object-cover"
           priority
         />
