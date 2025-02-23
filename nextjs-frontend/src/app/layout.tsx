@@ -1,11 +1,13 @@
 import { ThemeProvider } from "@/components/custom/theme-provider";
+import { auth } from "@/lib/auth";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { auth } from "@/lib/auth";
 
-import { SessionProvider } from "next-auth/react";
 import { Toaster } from "@/components/ui/sonner";
+import { SessionProvider } from "next-auth/react";
+
+import { QCProvider } from "@/lib/query";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,15 +35,17 @@ export default async function RootLayout({
     <html lang="pt-Br" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <SessionProvider session={user}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-            <Toaster />
-          </ThemeProvider>
+          <QCProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {children}
+              <Toaster />
+            </ThemeProvider>
+          </QCProvider>
         </SessionProvider>
       </body>
     </html>

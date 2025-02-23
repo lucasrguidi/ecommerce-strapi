@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 
+import { signUpSchema } from "@/app/schemas/sign-up-schema";
+import { LoadingSpinner } from "@/components/custom/loading-spinner";
 import {
   Form,
   FormControl,
@@ -12,18 +14,31 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { signInSchema } from "@/app/schemas/sign-in-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { signIn, useSession } from "next-auth/react";
 import { toast } from "sonner";
-import { signUpSchema } from "@/app/schemas/sign-up-schema";
+import { z } from "zod";
+import { registerUser } from "../../services/auth-service";
 
-export function SignUpForm() {
+interface SignUpFormProps {
+  toggleDialog: () => void;
+}
+
+export function SignUpForm({ toggleDialog }: SignUpFormProps) {
+  const { mutate: createUser, isPending } = useMutation({
+    mutationFn: registerUser,
+    onSuccess: () => {
+      toast.success("Cadastrado com sucesso.");
+      toggleDialog();
+      router.refresh();
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
+
   const router = useRouter();
-
-  const session = useSession();
 
   const form = useForm<z.infer<typeof signUpSchema>>({
     resolver: zodResolver(signUpSchema),
@@ -35,29 +50,11 @@ export function SignUpForm() {
   });
 
   async function onSubmit(values: z.infer<typeof signUpSchema>) {
-    try {
-      const createUser = fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/local/register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
-
-      toast.promise(createUser, {
-        loading: "Criando usuário...",
-        success: "Usuário criado com sucesso.",
-        error: "Ocorreu um erro ao criar o usuário.",
-      });
-    } catch (error) {
-      console.error(error);
-      toast.error("Ocorreu um erro durante o login. Tente novamente.");
-    }
+    createUser(values);
   }
 
   return (
     <Form {...form}>
-      {session.data?.user?.name}
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <FormField
           control={form.control}
@@ -98,8 +95,9 @@ export function SignUpForm() {
             </FormItem>
           )}
         />
-        <Button className="w-full" type="submit">
-          Submit
+        <Button className="w-full" type="submit" disabled={isPending}>
+          Cadastrar
+          {isPending && <LoadingSpinner />}
         </Button>
       </form>
     </Form>

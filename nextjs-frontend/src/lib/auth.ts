@@ -1,3 +1,4 @@
+import { API_ENDPOINTS } from "@/app/constants/apiEndpoints";
 import NextAuth, { User } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
@@ -9,7 +10,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: {},
       },
       authorize: async (credentials): Promise<User | null> => {
-        const response = await fetch(`${process.env.API_URL}/auth/local`, {
+        const response = await fetch(API_ENDPOINTS.LOGIN, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

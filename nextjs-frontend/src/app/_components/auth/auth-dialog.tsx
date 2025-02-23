@@ -17,10 +17,17 @@ import { SignInForm } from "./sign-in-form";
 import { SignUpForm } from "./sign-up-form";
 import { GoogleSignInButton } from "./google-signin-button";
 import { AppleSignInButton } from "./apple-signin-button";
+import { useState } from "react";
 
 export function AuthDialog() {
+  const [open, setOpen] = useState(false);
+
+  function toggleDialog() {
+    setOpen(!open);
+  }
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="outline">Entrar</Button>
       </DialogTrigger>
@@ -41,11 +48,11 @@ export function AuthDialog() {
           </TabsList>
 
           <TabsContent value="sign-in">
-            <SignInForm />
+            <SignInForm toggleDialog={toggleDialog} />
           </TabsContent>
 
           <TabsContent value="sign-up">
-            <SignUpForm />
+            <SignUpForm toggleDialog={toggleDialog} />
           </TabsContent>
         </Tabs>
 
