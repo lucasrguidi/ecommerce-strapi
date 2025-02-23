@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
 
-export default function CartIcon() {
+export function CartIcon() {
   return (
     <Link href="#">
       <Button variant="ghost">

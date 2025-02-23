@@ -6,9 +6,9 @@ import { Separator } from "@/components/ui/separator";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import CartIcon from "./cart-icon";
+import { CartIcon } from "./cart-icon";
 import { ThemeToggle } from "@/components/custom/theme-toggle";
-import { AuthDialog } from "./auth-dialog";
+import { AuthDialog } from "./auth/auth-dialog";
 
 const MENU_ITEMS = [
   { label: "Eletrônicos", href: "#" },

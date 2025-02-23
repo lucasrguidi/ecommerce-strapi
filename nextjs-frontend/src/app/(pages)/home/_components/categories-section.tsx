@@ -1,5 +1,5 @@
-import Category from "../types/category";
-import CategoryCard from "./category-card";
+import Category from "../../../types/category";
+import CategoryCard from "../../../_components/category-card";
 
 export async function CategoriesSection() {
   const categories: Category[] = await fetch(

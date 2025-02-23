@@ -1,5 +1,5 @@
-import Product from "../types/product";
-import ProductCard from "./product-card";
+import Product from "../../../types/product";
+import ProductCard from "../../../_components/product-card";
 
 export async function BestSellersSection() {
   const products: Product[] = await fetch(
