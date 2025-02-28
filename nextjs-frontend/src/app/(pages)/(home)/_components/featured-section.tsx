@@ -2,7 +2,7 @@ import Product from "../../../types/product";
 import ProductCard from "../../../_components/product-card";
 import { API_ENDPOINTS } from "@/app/constants/apiEndpoints";
 
-export async function BestSellersSection() {
+export async function FeaturedSection() {
   const products: Product[] = await fetch(
     `${API_ENDPOINTS.BASE_URL}/products?populate[images][fields][0]=url`,
   )

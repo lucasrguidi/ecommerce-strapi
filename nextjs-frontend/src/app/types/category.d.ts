@@ -1,3 +1,5 @@
+import Product from "./product";
+
 export default interface Category {
   id: number;
   name: string;
@@ -5,4 +7,5 @@ export default interface Category {
   image: {
     url: string;
   };
+  products: Product[];
 }
