@@ -4,60 +4,61 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --luxury: #1a1a1a;
-  --luxury-gold: #dcc397;
-  --luxury-white: #f5f5f5;
-  --luxury-text: #333333;
-  --luxury-muted: #e0e0e0; /* Muted: leve escurecimento do background (luxury-white) */
+  --background: oklch(0.98 0 0);
+  --foreground: oklch(0.07 0.02 280);
 
-  --background: var(--luxury-white);
-  --foreground: var(--luxury-text);
-  --card: var(--luxury-white);
-  --card-foreground: var(--luxury-text);
-  --popover: var(--luxury-white);
-  --popover-foreground: var(--luxury-text);
-  --primary: var(--luxury-gold);
-  --primary-foreground: var(--luxury);
-  --secondary: var(--luxury);
-  --secondary-foreground: var(--luxury-white);
-  --muted: var(--luxury-muted); /* Muted: leve escurecimento do background */
-  --muted-foreground: var(--luxury-text);
-  --accent: #c0a57a; /* Tom mais escuro do gold para contrastes */
-  --accent-foreground: var(--luxury);
-  --destructive: #dc2626; /* Vermelho para ações destrutivas */
-  --destructive-foreground: var(--luxury-white);
-  --border: #e0e0e0;
-  --input: var(--luxury-white); /* Inputs com fundo branco */
-  --ring: var(--luxury-gold);
-  --radius: 0.625rem;
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.07 0.02 280);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.07 0.02 280);
+
+  --primary: oklch(0.7 0.09 80);
+  --primary-foreground: oklch(0.98 0 0);
+
+  --secondary: oklch(0.52 0.05 57);
+  --secondary-foreground: oklch(0.98 0 0);
+
+  --muted: oklch(0.96 0.01 280);
+  --muted-foreground: oklch(0.54 0.02 280);
+
+  --accent: oklch(0.77 0.09 80);
+  --accent-foreground: oklch(0.07 0.02 280);
+
+  --destructive: oklch(0.4 0.16 29);
+  --destructive-foreground: oklch(0.98 0 0);
+
+  --border: oklch(0.91 0.01 280);
+  --input: oklch(0.91 0.01 280);
+  --ring: oklch(0.7 0.09 80 / 0.2);
+
+  --radius: 0.75rem;
 }
 
 .dark {
-  --luxury: #0d0d0d;
-  --luxury-gold: #c0a87d;
-  --luxury-white: #e0e0e0;
-  --luxury-text: #cccccc;
-  --luxury-muted: #333333; /* Muted: leve escurecimento do background (luxury) */
+  --background: oklch(0.07 0.02 280);
+  --foreground: oklch(0.98 0 0);
 
-  --background: var(--luxury);
-  --foreground: var(--luxury-white);
-  --card: var(--luxury);
-  --card-foreground: var(--luxury-white);
-  --popover: var(--luxury);
-  --popover-foreground: var(--luxury-white);
-  --primary: var(--luxury-gold);
-  --primary-foreground: var(--luxury);
-  --secondary: var(--luxury-white);
-  --secondary-foreground: var(--luxury);
-  --muted: var(--luxury-muted); /* Muted: leve escurecimento do background */
-  --muted-foreground: var(--luxury-text);
-  --accent: #a88f5f; /* Tom mais escuro do gold para contrastes no modo escuro */
-  --accent-foreground: var(--luxury-white);
-  --destructive: #b91c1c; /* Vermelho escuro para ações destrutivas */
-  --destructive-foreground: var(--luxury-white);
-  --border: #333333;
-  --input: var(--luxury-white); /* Inputs com fundo branco mesmo no modo escuro */
-  --ring: var(--luxury-gold);
+  --card: oklch(0.13 0.01 280);
+  --card-foreground: oklch(0.98 0 0);
+
+  --popover: oklch(0.13 0.01 280);
+  --popover-foreground: oklch(0.98 0 0);
+
+  --primary: oklch(0.77 0.09 80);
+  --primary-foreground: oklch(0.07 0.02 280);
+
+  --secondary: oklch(0.41 0.04 58);
+  --secondary-foreground: oklch(0.98 0 0);
+
+  --muted: oklch(0.18 0.01 280);
+  --muted-foreground: oklch(0.7 0.01 280);
+
+  --accent: oklch(0.62 0.08 80);
+  --accent-foreground: oklch(0.98 0 0);
+
+  --destructive: oklch(0.31 0.15 29);
+  --destructive-foreground: oklch(0.98 0 0);
 }
 
 @theme inline {
@@ -89,29 +90,23 @@
   --radius-xl: calc(var(--radius) + 4px);
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
+}
 
-  --color-luxury: var(--luxury);
-  --color-luxury-gold: var(--luxury-gold);
-  --color-luxury-white: var(--luxury-white);
-  --color-luxury-text: var(--luxury-text);
-  --color-luxury-muted: var(--luxury-muted); /* Adicionando a cor muted */
-
-  @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-    to {
-      height: var(--radix-accordion-content-height);
-    }
+@keyframes accordion-down {
+  from {
+    height: 0;
   }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
 
-  @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      height: 0;
-    }
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
   }
 }
 
@@ -121,21 +116,5 @@
   }
   body {
     @apply bg-background text-foreground;
-  }
-
-  .bg-luxury {
-    background-color: var(--luxury);
-  }
-  .bg-luxury-gold {
-    background-color: var(--luxury-gold);
-  }
-  .bg-luxury-white {
-    background-color: var(--luxury-white);
-  }
-  .text-luxury-text {
-    color: var(--luxury-text);
-  }
-  .text-luxury-muted {
-    color: var(--luxury-muted); /* Classe para textos muted */
   }
 }
