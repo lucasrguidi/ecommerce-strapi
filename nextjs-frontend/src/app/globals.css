@@ -30,9 +30,9 @@
 
   --border: oklch(0.91 0.01 280);
   --input: oklch(0.91 0.01 280);
-  --ring: oklch(0.7 0.09 80 / 0.2);
+  --ring: oklch(0.77 0.09 80);
 
-  --radius: 0.75rem;
+  --radius: 0.25rem;
 }
 
 .dark {
@@ -64,7 +64,7 @@
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-luxury: var(--font-playfair-display);
+  --font-heading: var(--font-playfair-display);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

@@ -26,7 +26,7 @@ const NavMenuItems = ({ className }: NavMenuItemsProps) => (
   <div className={`flex flex-col gap-1 md:flex-row ${className ?? ""}`}>
     {MENU_ITEMS.map(({ label, href }) => (
       <Link key={label} href={href}>
-        <Button variant="link" className="text-foreground w-full md:w-auto">
+        <Button variant="link" className="w-full md:w-auto">
           {label}
         </Button>
       </Link>
