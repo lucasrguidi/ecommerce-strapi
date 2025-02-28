@@ -5,13 +5,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Heart, ShoppingCart } from "lucide-react";
 import Product from "../types/product";
+import { API_ENDPOINTS } from "../constants/apiEndpoints";
 
 interface ProductCardProps {
   product: Product;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const imgUrl = `${process.env.API_IMAGE_URL}${product.image[0].url}`;
+  const imgUrl = `${API_ENDPOINTS.IMAGE_URL}${product.images[0].url}`;
 
   return (
     <Card className="flex flex-col gap-4">

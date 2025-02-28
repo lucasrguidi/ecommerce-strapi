@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@/components/custom/theme-provider";
 import { auth } from "@/lib/auth";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 import { Toaster } from "@/components/ui/sonner";
@@ -19,6 +19,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair-display",
+  weight: ["400", "700"],
+});
+
 export const metadata: Metadata = {
   title: "LucasShop - Next.js Ecommerce",
   description: "Ecommerce website built with Next.js",
@@ -33,7 +39,9 @@ export default async function RootLayout({
 
   return (
     <html lang="pt-Br" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} antialiased`}
+      >
         <SessionProvider session={user}>
           <QCProvider>
             <ThemeProvider

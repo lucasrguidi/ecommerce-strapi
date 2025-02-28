@@ -23,7 +23,7 @@
       "type": "decimal",
       "required": true
     },
-    "image": {
+    "images": {
       "type": "media",
       "multiple": true,
       "required": false,
@@ -39,6 +39,27 @@
       "relation": "manyToOne",
       "target": "api::category.category",
       "inversedBy": "products"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::brand.brand",
+      "inversedBy": "products"
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "default": false
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "product"
     }
   }
 }

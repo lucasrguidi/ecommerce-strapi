@@ -1,9 +1,10 @@
 import Product from "../../../types/product";
 import ProductCard from "../../../_components/product-card";
+import { API_ENDPOINTS } from "@/app/constants/apiEndpoints";
 
 export async function BestSellersSection() {
   const products: Product[] = await fetch(
-    `${process.env.API_URL}/products?populate[image][fields][0]=url`,
+    `${API_ENDPOINTS.BASE_URL}/products?populate[images][fields][0]=url`,
   )
     .then((res) => res.json())
     .then(({ data }) => data);

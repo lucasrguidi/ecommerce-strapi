@@ -1,83 +1,69 @@
 @import "tailwindcss";
-
 @plugin "tailwindcss-animate";
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.87 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  --luxury: #1a1a1a;
+  --luxury-gold: #dcc397;
+  --luxury-white: #f5f5f5;
+  --luxury-text: #333333;
+  --luxury-muted: #e0e0e0; /* Muted: leve escurecimento do background (luxury-white) */
+
+  --background: var(--luxury-white);
+  --foreground: var(--luxury-text);
+  --card: var(--luxury-white);
+  --card-foreground: var(--luxury-text);
+  --popover: var(--luxury-white);
+  --popover-foreground: var(--luxury-text);
+  --primary: var(--luxury-gold);
+  --primary-foreground: var(--luxury);
+  --secondary: var(--luxury);
+  --secondary-foreground: var(--luxury-white);
+  --muted: var(--luxury-muted); /* Muted: leve escurecimento do background */
+  --muted-foreground: var(--luxury-text);
+  --accent: #c0a57a; /* Tom mais escuro do gold para contrastes */
+  --accent-foreground: var(--luxury);
+  --destructive: #dc2626; /* Vermelho para ações destrutivas */
+  --destructive-foreground: var(--luxury-white);
+  --border: #e0e0e0;
+  --input: var(--luxury-white); /* Inputs com fundo branco */
+  --ring: var(--luxury-gold);
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.87 0 0);
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+  --luxury: #0d0d0d;
+  --luxury-gold: #c0a87d;
+  --luxury-white: #e0e0e0;
+  --luxury-text: #cccccc;
+  --luxury-muted: #333333; /* Muted: leve escurecimento do background (luxury) */
+
+  --background: var(--luxury);
+  --foreground: var(--luxury-white);
+  --card: var(--luxury);
+  --card-foreground: var(--luxury-white);
+  --popover: var(--luxury);
+  --popover-foreground: var(--luxury-white);
+  --primary: var(--luxury-gold);
+  --primary-foreground: var(--luxury);
+  --secondary: var(--luxury-white);
+  --secondary-foreground: var(--luxury);
+  --muted: var(--luxury-muted); /* Muted: leve escurecimento do background */
+  --muted-foreground: var(--luxury-text);
+  --accent: #a88f5f; /* Tom mais escuro do gold para contrastes no modo escuro */
+  --accent-foreground: var(--luxury-white);
+  --destructive: #b91c1c; /* Vermelho escuro para ações destrutivas */
+  --destructive-foreground: var(--luxury-white);
+  --border: #333333;
+  --input: var(--luxury-white); /* Inputs com fundo branco mesmo no modo escuro */
+  --ring: var(--luxury-gold);
 }
 
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-luxury: var(--font-playfair-display);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -97,25 +83,18 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  --color-luxury: var(--luxury);
+  --color-luxury-gold: var(--luxury-gold);
+  --color-luxury-white: var(--luxury-white);
+  --color-luxury-text: var(--luxury-text);
+  --color-luxury-muted: var(--luxury-muted); /* Adicionando a cor muted */
 
   @keyframes accordion-down {
     from {
@@ -142,5 +121,21 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  .bg-luxury {
+    background-color: var(--luxury);
+  }
+  .bg-luxury-gold {
+    background-color: var(--luxury-gold);
+  }
+  .bg-luxury-white {
+    background-color: var(--luxury-white);
+  }
+  .text-luxury-text {
+    color: var(--luxury-text);
+  }
+  .text-luxury-muted {
+    color: var(--luxury-muted); /* Classe para textos muted */
   }
 }

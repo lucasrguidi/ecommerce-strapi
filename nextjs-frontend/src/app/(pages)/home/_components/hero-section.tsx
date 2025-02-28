@@ -2,50 +2,35 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/image";
 
 export function HeroSection() {
   return (
-    <section className="bg-background py-8 lg:py-12" aria-labelledby="hero-heading">
-      <div className="container mx-auto flex flex-col-reverse items-center gap-12 px-6 lg:flex-row lg:gap-16">
-        {/* Left Column */}
-        <div className="flex flex-1 flex-col gap-6 lg:gap-8">
+    <section
+      className="bg-placeholder relative overflow-hidden bg-cover bg-center py-16 lg:py-24"
+      aria-labelledby="hero-heading"
+    >
+      <Image
+        src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e"
+        alt="Luxury Fashion"
+        className="absolute inset-0 h-full w-full object-cover"
+        fill
+      />
+      <div className="from-luxury/80 to-luxury/40 absolute inset-0 bg-gradient-to-r" />
+      <div className="relative z-1 container mx-auto flex flex-col items-center gap-12 px-6 lg:flex-row lg:gap-16">
+        <div className="m-auto flex max-w-2xl flex-1 flex-col items-center gap-6 text-center lg:gap-8">
           <div className="flex flex-col gap-4 lg:gap-5">
-            {/* Main Heading */}
-            <h1 id="hero-heading" className="text-foreground text-3xl font-bold md:text-5xl">
-              Lorem Ipsum
+            <h1 id="hero-heading" className="font-luxury text-3xl font-bold text-white md:text-5xl">
+              Descubra o Luxo Atemporal
             </h1>
-            {/* Description */}
-            <p className="text-muted-foreground text-base lg:text-lg">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et impedit earum distinctio
-              sit perspiciatis aperiam corrupti quasi sequi voluptas quidem, quia ab ducimus
-              doloremque debitis quibusdam porro dolor illo a!
+            <p className="text-base text-white/80 lg:text-lg">
+              Explore nossa coleção selecionada das marcas mais prestigiadas do mundo.
             </p>
           </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <Button>Comprar agora</Button>
-            <Button variant="ghost">
-              Ver mais
-              <ArrowRight />
-            </Button>
-          </div>
-        </div>
-
-        {/* Right Column */}
-        <div className="w-full flex-1">
-          <AspectRatio ratio={1 / 1}>
-            <Image
-              src="https://ui.shadcn.com/placeholder.svg"
-              alt="Hero section visual"
-              fill
-              sizes="100"
-              priority
-              className="h-full w-full rounded-xl object-cover"
-            />
-          </AspectRatio>
+          <Button>
+            Explorar Coleção
+            <ArrowRight />
+          </Button>
         </div>
       </div>
     </section>

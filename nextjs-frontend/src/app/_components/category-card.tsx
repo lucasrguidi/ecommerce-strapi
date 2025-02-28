@@ -3,13 +3,14 @@ import Image from "next/image";
 import Category from "../types/category";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
+import { API_ENDPOINTS } from "../constants/apiEndpoints";
 
 interface CategoryCardProps {
   category: Category;
 }
 
 export default function CategoryCard({ category }: CategoryCardProps) {
-  const imgUrl = `${process.env.API_IMAGE_URL}${category.image.url}`;
+  const imgUrl = `${API_ENDPOINTS.IMAGE_URL}${category.image.url}`;
 
   return (
     <div className="flex flex-col gap-6">
@@ -28,7 +29,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
       <div className="flex flex-col items-center gap-3">
         <h3 className="text-foreground text-base font-semibold md:text-lg">{category.name}</h3>
         <Button variant="secondary">
-          Ver produtos
+          Conheça a Coleção
           <ChevronRight />
         </Button>
       </div>
