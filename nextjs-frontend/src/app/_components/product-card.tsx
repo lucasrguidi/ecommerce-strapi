@@ -15,16 +15,17 @@ export default function ProductCard({ product }: ProductCardProps) {
   const imgUrl = `${API_ENDPOINTS.IMAGE_URL}${product.images[0].url}`;
 
   return (
-    <Card className="flex flex-col gap-4">
-      <AspectRatio ratio={4 / 3}>
+    <Card className="flex flex-col gap-4 overflow-hidden">
+      <AspectRatio ratio={4 / 3} className="group overflow-hidden">
         <Image
           src={imgUrl}
           alt={product.name}
           fill
           sizes="100"
-          className="h-full w-full rounded-xl rounded-b-none object-cover"
+          className="] relative h-full w-full rounded rounded-b-none object-cover transition-transform duration-500 group-hover:scale-105"
           priority
         />
+        <div className="absolute inset-0 bg-black/30 bg-gradient-to-t to-transparent opacity-80" />
       </AspectRatio>
 
       <CardContent className="flex flex-col gap-2">

@@ -1,37 +1,26 @@
-import Product from "../../../types/product";
-import ProductCard from "../../../_components/product-card";
-import { API_ENDPOINTS } from "@/app/constants/apiEndpoints";
+import { getBrands } from "@/app/services/get-brands";
+import BrandCard from "../../../_components/brand-card";
+import { getFeaturedProducts } from "@/app/services/get-featured-products";
+import ProductCard from "@/app/_components/product-card";
 
 export async function FeaturedSection() {
-  const products: Product[] = await fetch(
-    `${API_ENDPOINTS.BASE_URL}/products?populate[images][fields][0]=url`,
-  )
-    .then((res) => res.json())
-    .then(({ data }) => data);
+  const featuredProducts = await getFeaturedProducts();
 
   return (
     <section className="bg-background py-8 md:py-12">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col gap-12">
-          <div className="flex max-w-xl flex-col gap-4">
-            <p className="text-muted-foreground text-sm font-semibold md:text-base">
-              Os Mais Amados
-            </p>
-            <h2 className="text-foreground text-3xl font-bold md:text-4xl">
-              Nossos produtos mais vendidos
-            </h2>
-            <p className="text-muted-foreground">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam, quibusdam non? Modi
-              alias, quam, consequatur omnis iusto cum quo vel quod autem soluta totam mollitia?
-              Officia fugiat pariatur rem dicta.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-6">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+      <div className="container mx-auto flex flex-col gap-12 px-6 md:gap-16">
+        <div className="mx-auto flex max-w-xl flex-col gap-4 text-center md:gap-5">
+          <h2 className="text-foreground font-heading text-3xl font-bold md:text-4xl">
+            Grifes que Inspiram
+          </h2>
+          <p className="text-muted-foreground text-base">
+            Peças icônicas das marcas mais renomadas, selecionadas para você.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 lg:gap-6">
+          {featuredProducts.map((product) => {
+            return <ProductCard key={product.id} product={product} />;
+          })}
         </div>
       </div>
     </section>
