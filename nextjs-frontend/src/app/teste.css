@@ -1,0 +1,145 @@
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@plugin "tailwindcss-animate";
+
+@layer base {
+  :root {
+    /* Cores base - Light Mode */
+    --background: 0 0% 98%; /* #fafafa */
+    --foreground: 240 10% 4%; /* #0a0a0a */
+
+    --card: 0 0% 100%; /* #ffffff */
+    --card-foreground: 240 10% 4%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 4%;
+
+    --primary: 38 28% 52%; /* #b89f67 */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 28 18% 45%; /* #7a6653 */
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 5% 96%; /* #f5f5f5 */
+    --muted-foreground: 240 4% 46%;
+
+    --accent: 38 28% 65%; /* #d4b483 */
+    --accent-foreground: 240 10% 4%;
+
+    --destructive: 0 65% 35%; /* #991b1b */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 6% 90%; /* #e5e5e5 */
+    --input: 240 6% 90%;
+    --ring: 38 28% 52% / 0.2;
+
+    --radius: 0.75rem;
+
+    /* Cores de luxo adicionais */
+    --luxury-foreground: 240 10% 4%;
+    --luxury-gold: 38 28% 52%;
+    --luxury-accent: 28 18% 45%;
+  }
+
+  .dark {
+    /* Dark Mode */
+    --background: 240 10% 4%; /* #0a0a0a */
+    --foreground: 0 0% 98%;
+
+    --card: 240 6% 10%; /* #1a1a1a */
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 6% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 38 28% 65%; /* #c5ab7a */
+    --primary-foreground: 240 10% 4%;
+
+    --secondary: 28 18% 35%; /* #665645 */
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 6% 15%; /* #262626 */
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 38 28% 45%; /* #a88f5e */
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 65% 25%; /* #7f1d1d */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 6% 15%;
+    --input: 240 6% 15%;
+    --ring: 38 28% 52% / 0.3;
+
+    /* Ajustes para cores de luxo */
+    --luxury-foreground: 0 0% 93%; /* #ededed */
+    --luxury-gold: 38 28% 65%;
+    --luxury-accent: 28 18% 35%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+
+  /* Tipografia premium */
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-luxury {
+    font-family: var(--font-playfair-display);
+    font-weight: 700;
+  }
+
+  /* Componentes customizados */
+  .ring-luxury {
+    @apply ring-offset-background ring-luxury-gold ring-2 ring-offset-2;
+  }
+
+  .border-luxury {
+    @apply border-luxury-accent border-2;
+  }
+
+  /* Animações customizadas */
+  @keyframes fade-in-luxury {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-luxury {
+    animation: fade-in-luxury 0.5s ease-out;
+  }
+}
+
+@layer utilities {
+  .text-luxury-gold {
+    color: hsl(var(--luxury-gold));
+  }
+
+  .bg-luxury-accent {
+    background-color: hsl(var(--luxury-accent));
+  }
+
+  .border-luxury-gold {
+    border-color: hsl(var(--luxury-gold));
+  }
+
+  .text-luxury-foreground {
+    color: hsl(var(--luxury-foreground));
+  }
+}

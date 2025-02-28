@@ -28,7 +28,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
       </div>
       <div className="flex flex-col items-center gap-3">
         <h3 className="text-foreground text-base font-semibold md:text-lg">{category.name}</h3>
-        <Button variant="secondary">
+        <Button variant="link">
           Conheça a Coleção
           <ChevronRight />
         </Button>
