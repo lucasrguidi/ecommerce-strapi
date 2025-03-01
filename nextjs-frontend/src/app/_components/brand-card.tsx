@@ -28,7 +28,7 @@ export default function BrandCard({ brand }: BrandCardProps) {
             sizes="100"
             priority
           />
-          <div className="grou absolute inset-0 bg-black/30 bg-gradient-to-t to-transparent opacity-80" />
+          <div className="grou absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           <div className="text-foreground relative flex w-full flex-col justify-end p-6">
             <h3 className="font-heading bg-background/80 mb-2 p-2 text-2xl">{brand.name}</h3>
             <div className="mt-4 flex max-h-0 items-center overflow-hidden transition-all duration-300 ease-in-out group-hover:max-h-10">

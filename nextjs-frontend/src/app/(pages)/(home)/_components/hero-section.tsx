@@ -7,7 +7,7 @@ import Image from "next/image";
 export function HeroSection() {
   return (
     <section
-      className="bg-placeholder relative flex min-h-[80vh] items-center overflow-hidden bg-cover bg-center py-16 lg:py-24"
+      className="bg-placeholder relative flex items-center overflow-hidden bg-cover bg-center py-16 lg:min-h-[80vh] lg:py-24"
       aria-labelledby="hero-heading"
     >
       <Image

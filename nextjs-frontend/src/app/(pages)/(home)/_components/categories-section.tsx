@@ -16,7 +16,7 @@ export async function CategoriesSection() {
             Descubra o luxo em cada detalhe, organizado para você.
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 lg:gap-6">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-6">
           {categories.map((categorie) => {
             return <CategoryCard key={categorie.id} category={categorie} />;
           })}

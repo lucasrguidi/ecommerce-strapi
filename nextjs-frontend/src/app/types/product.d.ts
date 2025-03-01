@@ -1,3 +1,5 @@
+import { Brand } from "./brand";
+
 export default interface Product {
   id: string;
   name: string;
@@ -7,4 +9,6 @@ export default interface Product {
     url: string;
   }[];
   category: Category;
+  brand: Brand;
+  slug: string;
 }

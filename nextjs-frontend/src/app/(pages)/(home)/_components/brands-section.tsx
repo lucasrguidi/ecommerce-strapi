@@ -15,7 +15,7 @@ export async function BrandsSection() {
             Peças icônicas das marcas mais renomadas, selecionadas para você.
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 lg:gap-6">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-6">
           {brands.map((brand) => {
             return <BrandCard key={brand.id} brand={brand} />;
           })}

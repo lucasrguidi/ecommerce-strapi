@@ -8,6 +8,8 @@ import { Toaster } from "@/components/ui/sonner";
 import { SessionProvider } from "next-auth/react";
 
 import { QCProvider } from "@/lib/query";
+import { Navbar } from "./_components/nav-bar";
+import { Footer } from "./_components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,7 +52,9 @@ export default async function RootLayout({
               enableSystem
               disableTransitionOnChange
             >
-              {children}
+              <Navbar />
+              <main>{children}</main>
+              <Footer />
               <Toaster />
             </ThemeProvider>
           </QCProvider>

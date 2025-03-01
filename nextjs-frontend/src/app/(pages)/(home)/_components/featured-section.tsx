@@ -1,7 +1,8 @@
-import { getBrands } from "@/app/services/get-brands";
-import BrandCard from "../../../_components/brand-card";
 import { getFeaturedProducts } from "@/app/services/get-featured-products";
-import ProductCard from "@/app/_components/product-card";
+
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import { FeaturedProductsCarousel } from "./featured-products-carousel";
 
 export async function FeaturedSection() {
   const featuredProducts = await getFeaturedProducts();
@@ -11,16 +12,18 @@ export async function FeaturedSection() {
       <div className="container mx-auto flex flex-col gap-12 px-6 md:gap-16">
         <div className="mx-auto flex max-w-xl flex-col gap-4 text-center md:gap-5">
           <h2 className="text-foreground font-heading text-3xl font-bold md:text-4xl">
-            Grifes que Inspiram
+            Destaques Exclusivos
           </h2>
           <p className="text-muted-foreground text-base">
-            Peças icônicas das marcas mais renomadas, selecionadas para você.
+            Peças selecionadas à mão das grifes mais prestigiadas do mundo.
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 lg:gap-6">
-          {featuredProducts.map((product) => {
-            return <ProductCard key={product.id} product={product} />;
-          })}
+        <div className="flex flex-col gap-2">
+          <FeaturedProductsCarousel featuredProducts={featuredProducts} />
+          <Button variant={"link"}>
+            Ver todos os produtos
+            <ArrowRight />
+          </Button>
         </div>
       </div>
     </section>
