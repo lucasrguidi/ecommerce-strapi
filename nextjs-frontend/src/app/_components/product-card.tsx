@@ -15,8 +15,8 @@ export default function ProductCard({ product }: ProductCardProps) {
   const imgUrl = `${API_ENDPOINTS.IMAGE_URL}${product.images[0].url}`;
 
   return (
-    <div key={product.id} className="flex flex-col">
-      <div className="group flex flex-col overflow-hidden">
+    <div key={product.id} className="flex flex-1 flex-col">
+      <div className="group flex h-full flex-col overflow-hidden">
         <Link href={`/product/${product.slug}`} className="cursor-pointer">
           <div className="relative flex aspect-[4/3] flex-col overflow-hidden">
             <Image
@@ -30,8 +30,8 @@ export default function ProductCard({ product }: ProductCardProps) {
             <div className="group absolute inset-0 bg-black/30 bg-gradient-to-t to-transparent opacity-80" />
           </div>
         </Link>
-        <div className="text-foreground bg-background flex w-full flex-col gap-4 p-4">
-          <div className="flex flex-col">
+        <div className="text-foreground bg-background flex w-full flex-1 flex-col gap-4 p-4">
+          <div className="flex grow flex-col">
             <h2 className="text-primary text-md font-bold">{product.brand.name}</h2>
             <Link
               href={`/product/${product.slug}`}
@@ -43,7 +43,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <h4 className="text-foreground text-lg font-bold md:text-base">
             {currencyFormatter(product.price)}
           </h4>
-          <Button>
+          <Button className="mt-auto">
             <ShoppingCart />
             Adicionar ao carrinho
           </Button>
