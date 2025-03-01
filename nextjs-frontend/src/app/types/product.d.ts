@@ -11,4 +11,5 @@ export default interface Product {
   category: Category;
   brand: Brand;
   slug: string;
+  available: boolean;
 }

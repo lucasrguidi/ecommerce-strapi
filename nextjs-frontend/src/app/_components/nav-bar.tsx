@@ -14,6 +14,7 @@ import { MobileMenuItems } from "./mobile-menu-items";
 import { NavigationMenu, NavigationMenuList } from "@/components/ui/navigation-menu";
 import { DesktopMenuItems } from "./desktop-menu-items";
 import { NavBarSearch } from "./nav-bar-search";
+import { ThemeToggle } from "@/components/custom/theme-toggle";
 
 export default function NavBar() {
   return (
@@ -86,6 +87,7 @@ export default function NavBar() {
               <span className="sr-only">Account</span>
             </Button>
           </Link>
+          <ThemeToggle />
         </div>
       </div>
     </header>

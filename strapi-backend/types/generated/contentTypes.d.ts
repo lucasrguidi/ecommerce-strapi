@@ -478,6 +478,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    available: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     brand: Schema.Attribute.Relation<'manyToOne', 'api::brand.brand'>;
     category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
     createdAt: Schema.Attribute.DateTime;

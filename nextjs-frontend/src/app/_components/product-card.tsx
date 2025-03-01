@@ -17,7 +17,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <div key={product.id} className="flex flex-col">
       <div className="group flex flex-col overflow-hidden">
-        <Link href={`/products/${product.slug}`} className="cursor-pointer">
+        <Link href={`/product/${product.slug}`} className="cursor-pointer">
           <div className="relative flex aspect-[4/3] flex-col overflow-hidden">
             <Image
               src={imgUrl}
@@ -34,7 +34,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <div className="flex flex-col">
             <h2 className="text-primary text-md font-bold">{product.brand.name}</h2>
             <Link
-              href={`/products/${product.slug}`}
+              href={`/product/${product.slug}`}
               className="cursor-pointer hover:underline hover:underline-offset-4"
             >
               <h3 className="font-heading text-xl">{product.name}</h3>

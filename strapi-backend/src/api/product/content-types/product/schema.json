@@ -60,6 +60,10 @@
       "relation": "oneToMany",
       "target": "api::order.order",
       "mappedBy": "product"
+    },
+    "available": {
+      "type": "boolean",
+      "default": true
     }
   }
 }
