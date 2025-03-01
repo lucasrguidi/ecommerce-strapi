@@ -1,92 +1,93 @@
-"use client";
+import { Menu, ShoppingCart, User } from "lucide-react";
+import Link from "next/link";
 
 import { Logo } from "@/components/custom/logo";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { Menu, X } from "lucide-react";
-import Link from "next/link";
-import { useState } from "react";
-import { CartIcon } from "./cart-icon";
-import { ThemeToggle } from "@/components/custom/theme-toggle";
-import { AuthDialog } from "./auth/auth-dialog";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { MobileMenuItems } from "./mobile-menu-items";
+import { NavigationMenu, NavigationMenuList } from "@/components/ui/navigation-menu";
+import { DesktopMenuItems } from "./desktop-menu-items";
+import { NavBarSearch } from "./nav-bar-search";
 
-const MENU_ITEMS = [
-  { label: "Eletrônicos", href: "#" },
-  { label: "Roupas", href: "#" },
-  { label: "Casa e Decoração", href: "#" },
-  { label: "Pricing", href: "#" },
-  { label: "FAQ", href: "#" },
-] as const;
-
-interface NavMenuItemsProps {
-  className?: string;
-}
-
-const NavMenuItems = ({ className }: NavMenuItemsProps) => (
-  <div className={`flex flex-col gap-1 md:flex-row ${className ?? ""}`}>
-    {MENU_ITEMS.map(({ label, href }) => (
-      <Link key={label} href={href}>
-        <Button variant="link" className="w-full md:w-auto">
-          {label}
-        </Button>
-      </Link>
-    ))}
-  </div>
-);
-
-export function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
-
+export default function NavBar() {
   return (
-    <nav className="bg-background sticky top-0 isolate z-50 py-3.5 md:py-4">
-      <div className="container m-auto px-6">
-        {/* Main navbar row */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <Link href="/">
-              <Logo />
-            </Link>
-          </div>
+    <header className="bg-background sticky top-0 isolate z-50 py-3.5 md:py-4">
+      <div className="container m-auto flex gap-4 px-4 md:px-6">
+        {/* Mobile Menu */}
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="outline" size="icon" className="mr-2 md:hidden">
+              <Menu />
+            </Button>
+          </SheetTrigger>
 
-          {/* Desktop menu */}
-          <div className="hidden md:flex">
-            <NavMenuItems />
-          </div>
+          <SheetContent side="left" className="w-[300px] overflow-y-auto p-4 sm:w-[400px]">
+            <div className="flex flex-col gap-2">
+              <SheetTitle>
+                <Logo />
+              </SheetTitle>
+              <SheetDescription className="text-muted-foreground">
+                Peças de luxo cuidadosamente curadas, das marcas mais desejadas do planeta.
+              </SheetDescription>
+            </div>
+            <nav className="flex h-full max-h-[calc(100vh-4rem)] flex-col justify-between gap-6 overflow-y-auto pb-6 text-lg font-medium">
+              <MobileMenuItems />
 
-          {/* Mobile cart button */}
-          <div className="flex gap-3 md:hidden">
-            <CartIcon />
-          </div>
+              <div className="flex flex-col gap-2">
+                <Link
+                  href="#"
+                  className="text-muted-foreground hover:text-foreground flex items-center gap-2 py-1"
+                >
+                  <User className="h-4 w-4" />
+                  <span>Conta</span>
+                </Link>
+                <Link
+                  href="#"
+                  className="text-muted-foreground hover:text-foreground flex items-center gap-2 py-1"
+                >
+                  <ShoppingCart className="h-4 w-4" />
+                  <span>Carrinho</span>
+                </Link>
+              </div>
+            </nav>
+          </SheetContent>
+        </Sheet>
 
-          {/* Desktop cart button */}
-          <div className="hidden gap-3 md:flex">
-            <CartIcon />
-            <ThemeToggle />
-            <AuthDialog />
-          </div>
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2 text-lg font-semibold">
+          <Logo />
+        </Link>
 
-          {/* Mobile menu button */}
-          <Button
-            variant="ghost"
-            className="flex size-9 items-center justify-center md:hidden"
-            onClick={toggleMenu}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          >
-            {isMenuOpen ? <X /> : <Menu />}
-          </Button>
+        {/* Desktop Navigation */}
+        <NavigationMenu className="hidden md:flex">
+          <NavigationMenuList>
+            <DesktopMenuItems />
+          </NavigationMenuList>
+        </NavigationMenu>
+
+        {/* Search and Account */}
+        <div className="ml-auto flex items-center gap-2">
+          <NavBarSearch />
+          <Link href="/cart">
+            <Button variant="ghost" size="icon">
+              <ShoppingCart className="h-5 w-5" />
+              <span className="sr-only">Cart</span>
+            </Button>
+          </Link>
+          <Link href="/account">
+            <Button variant="ghost" size="icon">
+              <User className="h-5 w-5" />
+              <span className="sr-only">Account</span>
+            </Button>
+          </Link>
         </div>
-
-        {/* Mobile menu */}
-        {isMenuOpen && (
-          <div className="flex flex-col items-center gap-2.5 pt-4 md:hidden">
-            <NavMenuItems />
-            <ThemeToggle />
-            <Separator className="my-2" />
-          </div>
-        )}
       </div>
-    </nav>
+    </header>
   );
 }

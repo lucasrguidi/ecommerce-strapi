@@ -3,7 +3,6 @@ import { getCategories } from "@/app/services/get-categories";
 
 export async function CategoriesSection() {
   const categories = await getCategories();
-  console.log("🚀 ~ CategoriesSection ~ categories:", categories);
 
   return (
     <section className="bg-muted py-8 md:py-12">
