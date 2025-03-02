@@ -15,10 +15,11 @@ import { NavigationMenu, NavigationMenuList } from "@/components/ui/navigation-m
 import { DesktopMenuItems } from "./desktop-menu-items";
 import { NavBarSearch } from "./nav-bar-search";
 import { ThemeToggle } from "@/components/custom/theme-toggle";
+import CartButton from "./cart-button";
 
 export default function NavBar() {
   return (
-    <header className="bg-background sticky top-0 isolate z-50 py-3.5 md:py-4">
+    <header className="bg-popover sticky top-0 isolate z-50 py-3.5 md:py-4">
       <div className="container m-auto flex gap-4 px-4 md:px-6">
         {/* Mobile Menu */}
         <Sheet>
@@ -48,7 +49,7 @@ export default function NavBar() {
                   <span>Conta</span>
                 </Link>
                 <Link
-                  href="#"
+                  href=""
                   className="text-muted-foreground hover:text-foreground flex items-center gap-2 py-1"
                 >
                   <ShoppingCart className="h-4 w-4" />
@@ -74,12 +75,7 @@ export default function NavBar() {
         {/* Search and Account */}
         <div className="ml-auto flex items-center gap-2">
           <NavBarSearch />
-          <Link href="/cart">
-            <Button variant="ghost" size="icon">
-              <ShoppingCart className="h-5 w-5" />
-              <span className="sr-only">Cart</span>
-            </Button>
-          </Link>
+          <CartButton />
           <Link href="/account">
             <Button variant="ghost" size="icon">
               <User className="h-5 w-5" />

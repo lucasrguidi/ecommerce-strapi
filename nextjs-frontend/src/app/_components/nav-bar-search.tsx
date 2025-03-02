@@ -18,7 +18,9 @@ export function NavBarSearch() {
   const [debouncedSearch] = useDebounce(search, 500);
 
   useEffect(() => {
-    router.push("/search?search=" + debouncedSearch);
+    if (debouncedSearch) {
+      router.push("/search?search=" + debouncedSearch);
+    }
   }, [debouncedSearch]);
 
   return (

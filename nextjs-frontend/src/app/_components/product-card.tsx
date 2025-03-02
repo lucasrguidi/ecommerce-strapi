@@ -1,11 +1,12 @@
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
-import { Heart, ShoppingCart } from "lucide-react";
+import { Heart } from "lucide-react";
 import Link from "next/link";
 import { API_ENDPOINTS } from "../constants/apiEndpoints";
 import Product from "../types/product";
 import { currencyFormatter } from "../utils/currency-formatter";
+import AddToCartButton from "./add-to-cart-button";
 
 interface ProductCardProps {
   product: Product;
@@ -43,10 +44,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <h4 className="text-foreground text-lg font-bold md:text-base">
             {currencyFormatter(product.price)}
           </h4>
-          <Button className="mt-auto">
-            <ShoppingCart />
-            Adicionar ao carrinho
-          </Button>
+          <AddToCartButton product={product} className="mt-auto" />
           <div className="flex justify-between">
             <Button variant={"outline"}>
               <Heart />

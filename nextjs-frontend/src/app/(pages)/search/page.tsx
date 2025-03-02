@@ -76,7 +76,7 @@ export default async function SearchPage(props: { searchParams: SearchParams }) 
                   disabled={currentPage === 1}
                 >
                   {currentPage > 1 ? (
-                    <Link href={`?page=${currentPage - 1}&${getCurrentParams()}`} scroll={false}>
+                    <Link href={`?page=${currentPage - 1}&${getCurrentParams()}`}>
                       <ChevronLeft className="h-4 w-4" />
                     </Link>
                   ) : (
@@ -90,9 +90,7 @@ export default async function SearchPage(props: { searchParams: SearchParams }) 
                     variant={currentPage === pageNumber ? "default" : "outline"}
                     asChild
                   >
-                    <Link href={`?page=${pageNumber}&${getCurrentParams()}`} scroll={false}>
-                      {pageNumber}
-                    </Link>
+                    <Link href={`?page=${pageNumber}&${getCurrentParams()}`}>{pageNumber}</Link>
                   </Button>
                 ))}
 
@@ -103,7 +101,7 @@ export default async function SearchPage(props: { searchParams: SearchParams }) 
                   disabled={currentPage === pagination.pageCount}
                 >
                   {currentPage < pagination.pageCount ? (
-                    <Link href={`?page=${currentPage + 1}&${getCurrentParams()}`} scroll={false}>
+                    <Link href={`?page=${currentPage + 1}&${getCurrentParams()}`}>
                       <ChevronRight className="h-4 w-4" />
                     </Link>
                   ) : (
