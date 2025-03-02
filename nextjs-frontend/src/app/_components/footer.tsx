@@ -9,12 +9,12 @@ const FOOTER_COLUMNS = [
   {
     title: "Explorar",
     links: [
-      { label: "Bolsas", href: "#" },
-      { label: "Relógios", href: "#" },
-      { label: "Jóias", href: "#" },
-      { label: "Acessórios", href: "#" },
-      { label: "Sapatos", href: "#" },
-      { label: "Roupas", href: "#" },
+      { label: "Bolsas", href: "/search?category=bolsas" },
+      { label: "Relógios", href: "/search?category=relogios" },
+      { label: "Jóias", href: "/search?category=joias" },
+      { label: "Acessórios", href: "/search?category=acessorios" },
+      { label: "Sapatos", href: "/search?category=sapatos" },
+      { label: "Roupas", href: "/search?category=roupas" },
     ],
   },
   {

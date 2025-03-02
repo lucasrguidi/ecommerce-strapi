@@ -3,6 +3,7 @@ import { getFeaturedProducts } from "@/app/services/get-featured-products";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { FeaturedProductsCarousel } from "./featured-products-carousel";
+import Link from "next/link";
 
 export async function FeaturedSection() {
   const featuredProducts = await getFeaturedProducts();
@@ -18,12 +19,14 @@ export async function FeaturedSection() {
             Peças selecionadas à mão das grifes mais prestigiadas do mundo.
           </p>
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col justify-center gap-2">
           <FeaturedProductsCarousel featuredProducts={featuredProducts} />
-          <Button variant={"link"}>
-            Ver todos os produtos
-            <ArrowRight />
-          </Button>
+          <Link href={"/search"} className="flex w-full justify-center">
+            <Button variant={"link"}>
+              Ver todos os produtos
+              <ArrowRight />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

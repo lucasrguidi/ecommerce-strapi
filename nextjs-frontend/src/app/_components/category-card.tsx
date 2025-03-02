@@ -13,7 +13,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
   return (
     <div key={category.id} className="flex flex-col">
       <Link
-        href="/"
+        href={`/search?category=${category.slug}`}
         className="group flex flex-col overflow-hidden transition-shadow duration-300 hover:shadow-xl"
       >
         <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden">

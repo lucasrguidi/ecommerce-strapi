@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export function HeroSection() {
   return (
@@ -30,10 +31,12 @@ export function HeroSection() {
               Explore nossas peças selecionada das marcas mais prestigiadas do mundo.
             </p>
           </div>
-          <Button>
-            Explorar Marcas
-            <ArrowRight />
-          </Button>
+          <Link href="/search">
+            <Button>
+              Explorar Peças
+              <ArrowRight />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

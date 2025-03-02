@@ -39,7 +39,6 @@ export default function NavBar() {
             </div>
             <nav className="flex h-full max-h-[calc(100vh-4rem)] flex-col justify-between gap-6 overflow-y-auto pb-6 text-lg font-medium">
               <MobileMenuItems />
-
               <div className="flex flex-col gap-2">
                 <Link
                   href="#"

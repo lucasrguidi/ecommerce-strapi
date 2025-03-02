@@ -1,12 +1,12 @@
 import ProductCard from "@/app/_components/product-card";
+import { getBrands } from "@/app/services/get-brands";
+import { getCategories } from "@/app/services/get-categories";
 import { getProducts } from "@/app/services/get-products";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import BackToShopping from "../product/[slug]/_components/back-to-shopping";
 import Link from "next/link";
+import BackToShopping from "../product/[slug]/_components/back-to-shopping";
 import SearchAndFilter from "./_components/search-and-filter";
-import { getBrands } from "@/app/services/get-brands";
-import { getCategories } from "@/app/services/get-categories";
 
 type SearchParams = Promise<{
   page?: string;
@@ -37,7 +37,7 @@ export default async function SearchPage(props: { searchParams: SearchParams }) 
 
         {products.length === 0 ? (
           <div className="py-16 text-center">
-            <h2 className="font-playfair mb-4 text-2xl font-medium">Nenhum produto encontrado</h2>
+            <h2 className="font-heading mb-4 text-2xl font-medium">Nenhum produto encontrado</h2>
             <p className="text-foreground mb-8">Tente ajustar sua busca ou filtros</p>
             <BackToShopping />
           </div>

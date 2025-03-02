@@ -16,7 +16,7 @@ export default function BrandCard({ brand }: BrandCardProps) {
   return (
     <div key={brand.id} className="flex flex-col">
       <Link
-        href="/"
+        href={`/search?brand=${brand.slug}`}
         className="group flex flex-col overflow-hidden transition-shadow duration-300 hover:shadow-xl"
       >
         <div className="relative flex aspect-[4/3] overflow-hidden">

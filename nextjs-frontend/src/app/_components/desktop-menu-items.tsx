@@ -21,7 +21,10 @@ export async function DesktopMenuItems() {
             {brands.map((brand) => (
               <div key={brand.name} className="space-y-2">
                 <NavigationMenuLink asChild>
-                  <Link href="#" className="text-sm leading-none font-medium">
+                  <Link
+                    href={`/search?brand=${brand.slug}`}
+                    className="text-sm leading-none font-medium"
+                  >
                     {brand.name}
                   </Link>
                 </NavigationMenuLink>
@@ -38,7 +41,7 @@ export async function DesktopMenuItems() {
               <div key={category.name} className="space-y-2">
                 <NavigationMenuLink asChild>
                   <Link
-                    href="#"
+                    href={`/search?category=${category.slug}`}
                     className="text-sm leading-none font-medium hover:underline hover:underline-offset-2"
                   >
                     {category.name}

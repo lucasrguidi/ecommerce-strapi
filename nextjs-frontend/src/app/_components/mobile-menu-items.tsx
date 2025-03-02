@@ -12,7 +12,7 @@ export async function MobileMenuItems() {
         <h3 className="text-xl font-bold">Marcas</h3>
         <div className="flex flex-col">
           {brands.map((brand) => (
-            <Link key={brand.id} href={`/brands/${brand.id}`}>
+            <Link key={brand.id} href={`/search?brand=${brand.slug}`}>
               <span className="text-muted-foreground text-lg font-light hover:underline hover:underline-offset-2">
                 {brand.name}
               </span>
@@ -24,7 +24,7 @@ export async function MobileMenuItems() {
         <h3 className="text-xl font-bold">Categorias</h3>
         <div className="flex flex-col">
           {categories.map((category) => (
-            <Link key={category.id} href={`/categories/${category.id}`}>
+            <Link key={category.id} href={`/search?category=${category.slug}`}>
               <span className="text-muted-foreground text-lg font-light hover:underline hover:underline-offset-2">
                 {category.name}
               </span>
