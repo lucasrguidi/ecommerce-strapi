@@ -32,6 +32,22 @@ export default async function SearchPage(props: { searchParams: SearchParams }) 
   const brands = await getBrands();
   const categories = await getCategories();
 
+  function getCurrentParams() {
+    const params = new URLSearchParams();
+
+    Object.entries(searchParams).forEach(([key, value]) => {
+      if (value) {
+        params.set(key, value);
+      } else {
+        params.delete(key);
+      }
+    });
+
+    params.delete("page");
+
+    return params.toString();
+  }
+
   return (
     <section className="bg-background min-h-screen py-8 md:py-12">
       <div className="container mx-auto flex flex-col gap-12 px-6 md:gap-8">
@@ -60,7 +76,7 @@ export default async function SearchPage(props: { searchParams: SearchParams }) 
                   disabled={currentPage === 1}
                 >
                   {currentPage > 1 ? (
-                    <Link href={`?page=${currentPage - 1}`} scroll={false}>
+                    <Link href={`?page=${currentPage - 1}&${getCurrentParams()}`} scroll={false}>
                       <ChevronLeft className="h-4 w-4" />
                     </Link>
                   ) : (
@@ -74,7 +90,7 @@ export default async function SearchPage(props: { searchParams: SearchParams }) 
                     variant={currentPage === pageNumber ? "default" : "outline"}
                     asChild
                   >
-                    <Link href={`?page=${pageNumber}`} scroll={false}>
+                    <Link href={`?page=${pageNumber}&${getCurrentParams()}`} scroll={false}>
                       {pageNumber}
                     </Link>
                   </Button>
@@ -87,7 +103,7 @@ export default async function SearchPage(props: { searchParams: SearchParams }) 
                   disabled={currentPage === pagination.pageCount}
                 >
                   {currentPage < pagination.pageCount ? (
-                    <Link href={`?page=${currentPage + 1}`} scroll={false}>
+                    <Link href={`?page=${currentPage + 1}&${getCurrentParams()}`} scroll={false}>
                       <ChevronRight className="h-4 w-4" />
                     </Link>
                   ) : (
