@@ -19,6 +19,7 @@ export async function getProducts(
     brand?: string;
     category?: string;
     available?: string;
+    orderBy?: string;
   },
 ): Promise<PaginatedResponse> {
   const url = new URL(`${API_ENDPOINTS.BASE_URL}/products`);
@@ -54,6 +55,21 @@ export async function getProducts(
     }
     if (filters.available === "unavailable") {
       url.searchParams.append("filters[available][$eq]", "false");
+    }
+  }
+
+  // Ordenação
+  if (filters?.orderBy && filters.orderBy !== "default") {
+    if (filters.orderBy === "price-asc") {
+      url.searchParams.append("sort[0]", "price:asc");
+    }
+
+    if (filters.orderBy === "price-desc") {
+      url.searchParams.append("sort[0]", "price:desc");
+    }
+
+    if (filters.orderBy === "new") {
+      url.searchParams.append("sort[0]", "publishedAt:desc");
     }
   }
 

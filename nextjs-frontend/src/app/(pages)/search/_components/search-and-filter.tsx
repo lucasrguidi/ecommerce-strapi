@@ -59,6 +59,7 @@ export default function SearchAndFilter({
       brand: "",
       category: "",
       available: "",
+      orderBy: "",
     });
   };
 
@@ -161,34 +162,50 @@ export default function SearchAndFilter({
         </Sheet>
       </div>
 
-      <div className="flex gap-4">
-        {initialValues.brand && (
-          <Badge
-            className="flex cursor-pointer items-center"
-            onClick={() => updateParams({ brand: "" })}
-          >
-            {brands.find((brand) => brand.slug === initialValues.brand)?.name}
-            <X className="size-4" />
-          </Badge>
-        )}
-        {initialValues.category && (
-          <Badge
-            className="flex cursor-pointer items-center"
-            onClick={() => updateParams({ category: "" })}
-          >
-            {categories.find((category) => category.slug === initialValues.category)?.name}
-            <X className="size-4" />
-          </Badge>
-        )}
-        {initialValues.available && (
-          <Badge
-            className="flex cursor-pointer items-center"
-            onClick={() => updateParams({ available: "" })}
-          >
-            {initialValues.available === "available" ? "Em estoque" : "Indisponível"}
-            <X className="size-4" />
-          </Badge>
-        )}
+      <div className="flex w-full justify-between">
+        <div className="flex gap-4">
+          {initialValues.brand && (
+            <Badge
+              className="flex cursor-pointer items-center"
+              onClick={() => updateParams({ brand: "" })}
+            >
+              {brands.find((brand) => brand.slug === initialValues.brand)?.name}
+              <X className="size-4" />
+            </Badge>
+          )}
+          {initialValues.category && (
+            <Badge
+              className="flex cursor-pointer items-center"
+              onClick={() => updateParams({ category: "" })}
+            >
+              {categories.find((category) => category.slug === initialValues.category)?.name}
+              <X className="size-4" />
+            </Badge>
+          )}
+          {initialValues.available && (
+            <Badge
+              className="flex cursor-pointer items-center"
+              onClick={() => updateParams({ available: "" })}
+            >
+              {initialValues.available === "available" ? "Em estoque" : "Indisponível"}
+              <X className="size-4" />
+            </Badge>
+          )}
+        </div>
+        <Select
+          value={initialValues.orderBy || "default"}
+          onValueChange={(value) => updateParams({ orderBy: value })}
+        >
+          <SelectTrigger className="w-fit">
+            <SelectValue placeholder="Ordenar por" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="default">Destaques</SelectItem>
+            <SelectItem value="price-asc">Menor preço</SelectItem>
+            <SelectItem value="price-desc">Maior preço</SelectItem>
+            <SelectItem value="new">Mais novos</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
     </>
   );

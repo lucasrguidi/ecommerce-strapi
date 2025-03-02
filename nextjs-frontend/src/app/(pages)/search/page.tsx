@@ -14,6 +14,7 @@ type SearchParams = Promise<{
   brand?: string;
   category?: string;
   available?: string;
+  orderBy?: string;
 }>;
 
 export default async function SearchPage(props: { searchParams: SearchParams }) {
@@ -25,6 +26,7 @@ export default async function SearchPage(props: { searchParams: SearchParams }) 
     brand: searchParams.brand,
     category: searchParams.category,
     available: searchParams.available,
+    orderBy: searchParams.orderBy,
   });
 
   const brands = await getBrands();
