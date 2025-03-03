@@ -49,7 +49,7 @@ export default function NavBar() {
                   <span>Conta</span>
                 </Link>
                 <Link
-                  href=""
+                  href="/cart"
                   className="text-muted-foreground hover:text-foreground flex items-center gap-2 py-1"
                 >
                   <ShoppingCart className="h-4 w-4" />
