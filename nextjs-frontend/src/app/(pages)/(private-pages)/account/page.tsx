@@ -17,7 +17,6 @@ export default async function AccountPage({}: AccountPageProps) {
         <h1 className="font-heading text-foreground text-3xl font-medium md:text-4xl">
           Minha conta
         </h1>
-        <div>{JSON.stringify(user)}</div>
         <Tabs defaultValue="profile" className="w-full space-y-4">
           <TabsList className="flex w-full max-w-md">
             <TabsTrigger value="profile" className="flex w-full gap-2 text-base">
