@@ -4,7 +4,7 @@ import { FeaturedSection } from "./_components/featured-section";
 
 import { HeroSection } from "./_components/hero-section";
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <HeroSection />

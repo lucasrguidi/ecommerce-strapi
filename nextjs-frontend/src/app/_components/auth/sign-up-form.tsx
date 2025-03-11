@@ -20,6 +20,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { z } from "zod";
 import { registerUser } from "../../services/auth-service";
+import { PhoneInput } from "@/components/custom/phone-input";
 
 interface SignUpFormProps {
   toggleDialog: () => void;
@@ -43,13 +44,16 @@ export function SignUpForm({ toggleDialog }: SignUpFormProps) {
   const form = useForm<z.infer<typeof signUpSchema>>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
+      full_name: "",
       username: "",
       email: "",
+      phone: "",
       password: "",
     },
   });
 
   async function onSubmit(values: z.infer<typeof signUpSchema>) {
+    console.log("🚀 ~ onSubmit ~ values:", values);
     createUser(values);
   }
 
@@ -58,10 +62,23 @@ export function SignUpForm({ toggleDialog }: SignUpFormProps) {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <FormField
           control={form.control}
+          name="full_name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Nome completo</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="username"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>Usuário</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
@@ -77,6 +94,19 @@ export function SignUpForm({ toggleDialog }: SignUpFormProps) {
               <FormLabel>E-mail</FormLabel>
               <FormControl>
                 <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="phone"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Telefone</FormLabel>
+              <FormControl>
+                <PhoneInput defaultCountry="BR" placeholder="Número de telefone" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

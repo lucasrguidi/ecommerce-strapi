@@ -6,18 +6,14 @@ import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useState } from "react";
 import { SignInForm } from "./sign-in-form";
 import { SignUpForm } from "./sign-up-form";
-import { GoogleSignInButton } from "./google-signin-button";
-import { AppleSignInButton } from "./apple-signin-button";
-import { useState } from "react";
 
 export function AuthDialog() {
   const [open, setOpen] = useState(false);
@@ -33,12 +29,10 @@ export function AuthDialog() {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[400px]">
         <DialogHeader>
-          <Logo className="mb-6" />
-          <DialogTitle className="text-lg font-bold">Entrar</DialogTitle>
-          <DialogDescription>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit interdum hendrerit ex vitae
-            sodales.
-          </DialogDescription>
+          <Logo />
+          <DialogTitle className="font-heading text-center text-lg font-bold">
+            Bem-vindo
+          </DialogTitle>
         </DialogHeader>
 
         <Tabs defaultValue="sign-in">
@@ -56,7 +50,7 @@ export function AuthDialog() {
           </TabsContent>
         </Tabs>
 
-        <div className="relative">
+        {/* <div className="relative">
           <div className="absolute inset-0 flex items-center">
             <Separator className="w-full" />
           </div>
@@ -68,7 +62,7 @@ export function AuthDialog() {
         <div className="space-y-3">
           <GoogleSignInButton />
           <AppleSignInButton />
-        </div>
+        </div> */}
       </DialogContent>
     </Dialog>
   );

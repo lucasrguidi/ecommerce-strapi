@@ -1,3 +1,4 @@
+import { getUser } from "@/app/services/get-user";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Package, User } from "lucide-react";
 import Orders from "./_components/order";
@@ -7,13 +8,16 @@ interface AccountPageProps {
   a?: null;
 }
 
-export default function AccountPage({}: AccountPageProps) {
+export default async function AccountPage({}: AccountPageProps) {
+  const user = await getUser();
+
   return (
     <section className="bg-background min-h-screen py-8 md:py-12">
       <div className="container mx-auto flex flex-col gap-12 px-6 md:gap-8">
         <h1 className="font-heading text-foreground text-3xl font-medium md:text-4xl">
           Minha conta
         </h1>
+        <div>{JSON.stringify(user)}</div>
         <Tabs defaultValue="profile" className="w-full space-y-4">
           <TabsList className="flex w-full max-w-md">
             <TabsTrigger value="profile" className="flex w-full gap-2 text-base">
@@ -27,7 +31,7 @@ export default function AccountPage({}: AccountPageProps) {
           </TabsList>
 
           <TabsContent value="profile">
-            <PersonalInformation />
+            <PersonalInformation user={user} />
           </TabsContent>
 
           <TabsContent value="orders">

@@ -1,5 +1,6 @@
 "use client";
 
+import UserData from "@/app/types/userdata";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -7,35 +8,11 @@ import { Label } from "@/components/ui/label";
 import { Edit2 } from "lucide-react";
 import { useState } from "react";
 
-const userData = {
-  name: "Emma Wilson",
-  email: "emma.wilson@example.com",
-  phone: "+1 (555) 123-4567",
-  addresses: [
-    {
-      id: "addr1",
-      type: "Home",
-      street: "123 Park Avenue",
-      city: "New York",
-      state: "NY",
-      zipCode: "10001",
-      country: "United States",
-      isDefault: true,
-    },
-  ],
-  paymentMethods: [
-    {
-      id: "pm1",
-      type: "Credit Card",
-      lastFour: "4242",
-      brand: "Visa",
-      expiry: "06/25",
-      isDefault: true,
-    },
-  ],
-};
+interface PersonalInformationProps {
+  user: UserData;
+}
 
-export default function PersonalInformation() {
+export default function PersonalInformation({ user }: PersonalInformationProps) {
   const [isEditing, setIsEditing] = useState(false);
 
   return (
@@ -82,15 +59,15 @@ export default function PersonalInformation() {
         <div className="flex flex-col gap-4">
           <div>
             <p className="mb-1 text-sm text-gray-500">Nome completo</p>
-            <p>{userData.name}</p>
+            <p>{user.username}</p>
           </div>
           <div>
             <p className="mb-1 text-sm text-gray-500">E-mail</p>
-            <p>{userData.email}</p>
+            <p>{user.email}</p>
           </div>
           <div>
             <p className="mb-1 text-sm text-gray-500">Telefone</p>
-            <p>{userData.phone}</p>
+            <p>{user.confirmed}</p>
           </div>
         </div>
       )}

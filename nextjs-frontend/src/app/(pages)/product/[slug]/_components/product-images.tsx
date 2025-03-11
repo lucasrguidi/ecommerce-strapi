@@ -32,7 +32,7 @@ export default function ProductImages({ productName, images }: ProductImagesProp
             key={index}
             onClick={() => setSelectedImage(index)}
             className={`aspect-square overflow-hidden rounded-lg ${
-              selectedImage === index ? "ring-luxury-gold ring-2" : "ring-1 ring-gray-200"
+              selectedImage === index ? "ring-primary ring-2" : "ring-1 ring-gray-200"
             }`}
           >
             <Image
