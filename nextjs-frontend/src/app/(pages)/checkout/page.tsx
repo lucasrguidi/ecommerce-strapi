@@ -1,3 +1,4 @@
+"use client";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import CheckoutForm from "./_components/checkout-form";
@@ -5,6 +6,8 @@ import CheckoutForm from "./_components/checkout-form";
 import { currencyFormatter } from "@/app/utils/currency-formatter";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
+import { CheckoutSteps } from "./_components/checkout-steps";
+import { useState } from "react";
 
 const mockCartItems = [
   {
@@ -18,6 +21,13 @@ const mockCartItems = [
 ];
 
 export default function CheckoutPage() {
+  const [currentStep, setCurrentStep] = useState(0);
+
+  const steps = [
+    { text: "Envio", value: "shipping" },
+    { text: "Pagamento", value: "payment" },
+    { text: "Revisão", value: "review" },
+  ];
   return (
     <section className="bg-background min-h-screen py-8 md:py-12">
       <div className="container mx-auto flex flex-col gap-12 px-6 md:gap-4">
@@ -35,8 +45,10 @@ export default function CheckoutPage() {
           </p>
         </div>
 
-        <div className="flex items-start gap-8">
-          <CheckoutForm />
+        <CheckoutSteps steps={steps} currentStep={currentStep} />
+
+        <div className="flex flex-col items-start gap-4 md:flex-row md:gap-8">
+          <CheckoutForm currentStep={currentStep} steps={steps} setCurrentStep={setCurrentStep} />
           <div className="bg-popover dark:bg-muted flex w-full flex-col gap-4 rounded-md p-4 shadow-sm md:w-1/3">
             <h2 className="font-heading text-xl font-medium">Detalhes da Sua Compra</h2>
             <div className="space-y-2">

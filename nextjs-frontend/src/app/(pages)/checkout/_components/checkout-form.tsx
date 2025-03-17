@@ -3,13 +3,17 @@
 import { checkoutSchema } from "@/app/schemas/checkout-schema";
 import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";
-import { CheckoutSteps } from "./checkout-steps";
 import { OrderReview } from "./order-review";
 import { PaymentForm } from "./payment-form";
 import { ShippingForm } from "./shipping-form";
+
+interface CheckoutFormProps {
+  steps: { text: string; value: string }[];
+  currentStep: number;
+  setCurrentStep: (step: number) => void;
+}
 
 const cartItems = [
   { id: 1, name: "Premium Headphones", price: 129.99, quantity: 1 },
@@ -37,15 +41,7 @@ const defaultValues: CheckoutFormValues = {
   },
 };
 
-export default function CheckoutForm() {
-  const [currentStep, setCurrentStep] = useState(0);
-
-  const steps = [
-    { text: "Envio", value: "shipping" },
-    { text: "Pagamento", value: "payment" },
-    { text: "Revisão", value: "review" },
-  ];
-
+export default function CheckoutForm({ steps, currentStep, setCurrentStep }: CheckoutFormProps) {
   const methods = useForm<CheckoutFormValues>({
     resolver: zodResolver(checkoutSchema),
     defaultValues,
@@ -88,8 +84,6 @@ export default function CheckoutForm() {
   return (
     <FormProvider {...methods}>
       <div className="flex w-full flex-1 flex-col space-y-6 md:w-2/3">
-        <CheckoutSteps steps={steps} currentStep={currentStep} />
-
         <div className="bg-popover dark:bg-muted flex flex-col gap-4 rounded-md p-4 shadow-sm">
           <form onSubmit={handleSubmit(onSubmitOrder)} className="flex flex-col gap-8">
             {currentStep === 0 && <ShippingForm />}
