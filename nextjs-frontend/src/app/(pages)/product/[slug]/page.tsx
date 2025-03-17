@@ -9,6 +9,7 @@ import Link from "next/link";
 import BackToShopping from "./_components/back-to-shopping";
 import ProductImages from "./_components/product-images";
 import RelatedProduts from "./_components/related-products";
+import AddToCartButton from "@/app/_components/add-to-cart-button";
 
 interface ProductPageProps {
   params: Promise<{ slug: string }>;
@@ -65,11 +66,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
               {product.available ? (
                 <div className="flex flex-col gap-4">
-                  <Button
-                  // onClick={handleAddToCart}
+                  {/* <Button
+                  onClick={handleAddToCart}
                   >
                     Adicionar ao carrinho
-                  </Button>
+                  </Button> */}
+                  <AddToCartButton product={product} />
                   <Button variant="outline">
                     <Heart className="mr-2 h-5 w-5" />
                     Adicionar à Lista de Desejos
