@@ -29,7 +29,6 @@ export function CheckoutSteps({ steps, currentStep }: CheckoutStepsProps) {
               {step.text}
             </span>
 
-            {/* Connector line */}
             {index < steps.length - 1 && (
               <div
                 className={`absolute top-5 left-10 h-0.5 w-[calc(100vw/3-4rem)] ${index < currentStep ? "bg-primary" : "bg-muted"}`}

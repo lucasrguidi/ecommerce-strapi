@@ -53,7 +53,6 @@ export function SignUpForm({ toggleDialog }: SignUpFormProps) {
   });
 
   async function onSubmit(values: z.infer<typeof signUpSchema>) {
-    console.log("🚀 ~ onSubmit ~ values:", values);
     createUser(values);
   }
 
@@ -106,7 +105,7 @@ export function SignUpForm({ toggleDialog }: SignUpFormProps) {
             <FormItem>
               <FormLabel>Telefone</FormLabel>
               <FormControl>
-                <PhoneInput defaultCountry="BR" placeholder="Número de telefone" {...field} />
+                <PhoneInput placeholder="Número de telefone" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

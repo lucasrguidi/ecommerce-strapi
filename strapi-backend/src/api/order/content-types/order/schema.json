@@ -4,7 +4,8 @@
   "info": {
     "singularName": "order",
     "pluralName": "orders",
-    "displayName": "Order"
+    "displayName": "Order",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -28,11 +29,20 @@
         "delivered"
       ]
     },
-    "product": {
+    "products": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::product.product",
-      "inversedBy": "orders"
+      "relation": "oneToMany",
+      "target": "api::product.product"
+    },
+    "shipping": {
+      "type": "component",
+      "repeatable": false,
+      "component": "order.shipping"
+    },
+    "payment": {
+      "type": "component",
+      "repeatable": false,
+      "component": "order.payment"
     }
   }
 }

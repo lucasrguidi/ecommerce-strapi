@@ -1,10 +1,13 @@
 "use client";
 
 import { checkoutSchema } from "@/app/schemas/checkout-schema";
+import { useCartStore } from "@/app/stores/cart-store";
 import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";
+import UseCart from "../../cart/hooks/use-cart";
+import useCheckout from "../hooks/use-checkout";
 import { OrderReview } from "./order-review";
 import { PaymentForm } from "./payment-form";
 import { ShippingForm } from "./shipping-form";
@@ -14,11 +17,6 @@ interface CheckoutFormProps {
   currentStep: number;
   setCurrentStep: (step: number) => void;
 }
-
-const cartItems = [
-  { id: 1, name: "Premium Headphones", price: 129.99, quantity: 1 },
-  { id: 2, name: "Wireless Charger", price: 39.99, quantity: 2 },
-];
 
 export type CheckoutFormValues = z.infer<typeof checkoutSchema>;
 
@@ -48,6 +46,12 @@ export default function CheckoutForm({ steps, currentStep, setCurrentStep }: Che
     mode: "onChange",
   });
 
+  const { items } = useCartStore();
+
+  const { total } = UseCart({ items });
+
+  const { createOrder } = useCheckout();
+
   const { handleSubmit, trigger, getValues } = methods;
 
   const handleNext = async () => {
@@ -73,12 +77,13 @@ export default function CheckoutForm({ steps, currentStep, setCurrentStep }: Che
   };
 
   const onSubmitOrder = (data: CheckoutFormValues) => {
-    console.log("Form data submitted:", data);
-    alert("Order submitted successfully!");
-  };
-
-  const calculateTotal = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    createOrder({
+      total,
+      order_status: "paid",
+      products: items.flatMap((item) => Array(item.quantity).fill(item.product.id)),
+      shipping: data.shipping,
+      payment: data.payment,
+    });
   };
 
   return (
@@ -88,9 +93,7 @@ export default function CheckoutForm({ steps, currentStep, setCurrentStep }: Che
           <form onSubmit={handleSubmit(onSubmitOrder)} className="flex flex-col gap-8">
             {currentStep === 0 && <ShippingForm />}
             {currentStep === 1 && <PaymentForm />}
-            {currentStep === 2 && (
-              <OrderReview formData={getValues()} cartItems={cartItems} total={calculateTotal()} />
-            )}
+            {currentStep === 2 && <OrderReview formData={getValues()} />}
 
             <div className="flex justify-between">
               <Button
@@ -102,13 +105,13 @@ export default function CheckoutForm({ steps, currentStep, setCurrentStep }: Che
                 Voltar
               </Button>
 
-              {currentStep < steps.length - 1 ? (
+              {currentStep < steps.length - 1 && (
                 <Button type="button" onClick={handleNext}>
                   Continuar para {steps[currentStep + 1].text}
                 </Button>
-              ) : (
-                <Button type="submit">Finalizar pedido</Button>
               )}
+
+              {currentStep === steps.length - 1 && <Button type="submit">Finalizar pedido</Button>}
             </div>
           </form>
         </div>

@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_order_payments",
+  "info": {
+    "displayName": "Payment",
+    "icon": "check"
+  },
+  "options": {},
+  "attributes": {
+    "card_name": {
+      "type": "string",
+      "required": true
+    },
+    "card_number": {
+      "type": "string",
+      "required": true
+    },
+    "cvv": {
+      "type": "string",
+      "required": true
+    },
+    "expiry_date": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

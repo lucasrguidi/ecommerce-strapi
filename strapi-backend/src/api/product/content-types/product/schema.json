@@ -55,12 +55,6 @@
       "type": "boolean",
       "default": false
     },
-    "orders": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::order.order",
-      "mappedBy": "product"
-    },
     "available": {
       "type": "boolean",
       "default": true

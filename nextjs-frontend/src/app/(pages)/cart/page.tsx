@@ -8,13 +8,12 @@ import { Separator } from "@/components/ui/separator";
 import { Minus, Plus, ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import BackToShopping from "../product/[slug]/_components/back-to-shopping";
+import Link from "next/link";
+import UseCart from "./hooks/use-cart";
 
 export default function CartPage() {
   const { clearCart, items, removeFromCart, updateQuantity } = useCartStore();
-
-  const subtotal = items.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
-  const shipping = 0; // Free shipping
-  const total = subtotal + shipping;
+  const { subtotal, shippingTotal, total } = UseCart({ items });
 
   return (
     <section className="bg-background min-h-screen py-8 md:py-12">
@@ -114,7 +113,9 @@ export default function CartPage() {
                   </div>
                   <div className="text-popover-foreground flex justify-between">
                     <span>Entrega</span>
-                    <span>Cortesia</span>
+                    <span>
+                      {shippingTotal == 0 ? "Cortesia" : currencyFormatter(shippingTotal)}
+                    </span>
                   </div>
                   <Separator />
                   <div className="flex justify-between text-lg font-medium">
@@ -122,7 +123,9 @@ export default function CartPage() {
                     <span>{currencyFormatter(total)}</span>
                   </div>
                 </div>
-                <Button className="w-full">Prosseguir para o Pagamento</Button>
+                <Button className="w-full">
+                  <Link href="/checkout">Prosseguir para o Pagamento</Link>
+                </Button>
               </div>
             </div>
           </div>

@@ -28,7 +28,7 @@ export function PaymentForm() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col">
-        <h2 className="font-heading text-xl font-medium">Detalhes do envio</h2>
+        <h2 className="font-heading text-xl font-medium">Forma de Pagamento</h2>
 
         <span className="text-muted-foreground text-sm">
           Suas informações de pagamento são protegidas com criptografia avançada.

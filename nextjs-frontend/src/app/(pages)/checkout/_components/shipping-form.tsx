@@ -130,7 +130,7 @@ export function ShippingForm() {
             <FormItem>
               <FormLabel>Telefone</FormLabel>
               <FormControl>
-                <PhoneInput defaultCountry="BR" placeholder="Número de telefone" {...field} />
+                <PhoneInput placeholder="Número de telefone" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

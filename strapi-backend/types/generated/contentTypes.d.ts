@@ -436,6 +436,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
 export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
   collectionName: 'orders';
   info: {
+    description: '';
     displayName: 'Order';
     pluralName: 'orders';
     singularName: 'order';
@@ -453,8 +454,10 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
     order_status: Schema.Attribute.Enumeration<
       ['pending', 'paid', 'delivered']
     >;
-    product: Schema.Attribute.Relation<'manyToOne', 'api::product.product'>;
+    payment: Schema.Attribute.Component<'order.payment', false>;
+    products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
+    shipping: Schema.Attribute.Component<'order.shipping', false>;
     total: Schema.Attribute.Decimal;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -497,7 +500,6 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
-    orders: Schema.Attribute.Relation<'oneToMany', 'api::order.order'>;
     price: Schema.Attribute.Decimal & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
